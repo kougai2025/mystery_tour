@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+<head>
+    <title>校外学習portal</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='quiz.css') }}">
+    
+</head>
+
+<body>
+  <div id="main-container" class="main-container">
+    <div class="component-single">
+      <p>　{{ username }} 班 Q1-2　　　<a href="../login">ログアウト</a></p>
+      <div class="box">
+        <div class="question">
+          <div class="swiper">
+            <div class="swiper-wrapper">
+            <div class="swiper-slide slide1"><img src="{{ url_for('static', filename='img/2/9.png') }}" style="max-width: 100%; max-height: 100%;"></div>
+            <div class="swiper-slide slide2"><img src="{{ url_for('static', filename='img/2/10.png') }}" style="max-width: 100%; max-height: 100%;"></div>
+            </div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+            </div> 
+        </div>
+        
+    </div>
+    <div class="answer">
+              <div class="input-container">
+                <div class="wrap" type="text"><input key="input-1" type="text" placeholder="答え（駅名）を入力して下さい" class="input" id="userInput"> <button class="submit blank" onclick="checkAnswer()"></button></div>
+              </div>
+            </div>
+            <div id="result" style="margin-top:20px;"></div>
+            
+        </div>
+  </div>
+
+  <script>
+    const correctAnswers = ["えび", "エビ", "海老", "🦐", "蝦"]; 
+
+    function checkAnswer() {
+      const input = document.getElementById("userInput").value.trim();
+      const resultDiv = document.getElementById("result");
+
+      resultDiv.style.display = "block";
+
+      if (correctAnswers.includes(input)) {
+        resultDiv.innerHTML = `<i class="far fa-circle" style="font-size: 30rem; color: red;" ></i>`;
+        setTimeout(function () {
+          window.location.href = "2A.html";
+        }, 4000);
+      } else {
+        resultDiv.innerHTML = `<i class="fas fa-times" style="font-size: 30rem; color: blue;"></i>`;
+      }
+
+      setTimeout(function () {
+        resultDiv.style.display = "none";
+      }, 2000);
+    }
+  </script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='slide.js') }}"></script>
+  
+</body>
+</html>

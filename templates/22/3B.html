@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+    <title>校外学習portal</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='quiz.css') }}">
+    
+</head>
+
+<body>
+  <div id="main-container" class="main-container">
+    <div class="component-single">
+      <p>　{{ username }} 班 Q3-2　　　<a href="../login">ログアウト</a></p>
+      <div class="box">
+        <div class="question">
+            <img src="{{ url_for('static', filename='img/1/1.png') }}" class="img"> 
+        </div>
+        
+    </div>
+    <div class="answer">
+              <div class="input-container">
+                <div class="wrap" type="text"><input key="input-1" type="text" placeholder="答え（駅名）を入力して下さい" class="input" id="userInput"> <button class="submit blank" onclick="checkAnswer()"></button></div>
+              </div>
+            </div>
+            <div id="result" style="margin-top:20px;"></div>
+            
+        </div>
+  </div>
+
+  <script>
+    const correctAnswers = ["1", "１"]; 
+
+    function checkAnswer() {
+      const input = document.getElementById("userInput").value.trim();
+      const resultDiv = document.getElementById("result");
+
+      resultDiv.style.display = "block";
+
+      if (correctAnswers.includes(input)) {
+        resultDiv.innerHTML = `<i class="far fa-circle" style="font-size: 30rem; color: red;" ></i>`;
+        setTimeout(function () {
+          window.location.href = "4A.html";
+        }, 4000);
+      } else {
+        resultDiv.innerHTML = `<i class="fas fa-times" style="font-size: 30rem; color: blue;"></i>`;
+      }
+
+      setTimeout(function () {
+        resultDiv.style.display = "none";
+      }, 2000);
+    }
+  </script>
+  
+</body>
+</html>

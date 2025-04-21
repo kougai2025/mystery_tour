@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>進捗</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 90%;
+            margin: 20px auto;
+        }
+        th, td {
+            border: 1px solid #666;
+            padding: 8px 10px;
+            text-align: center;
+        }
+        th {
+            background: #f0f0f0;
+        }
+        .yes {
+            background-color: #c8e6c9;
+        }
+        .no {
+            background-color: #ffcdd2;
+        }
+    </style>
+</head>
+<body>
+    <h2 style="text-align:center;">進捗</h2>
+    <p style="text-align:center;">・oは各班がそのページにすでにアクセスしていることを示す、正答したわけではなく取り込み中ということ。。。</p>
+    <table>
+        <tr>
+            <th>Group</th>
+            {% for page in page_names %}
+                <th>{{ page }}</th>
+            {% endfor %}
+        </tr>
+        {% for user, pages in access_map.items() %}
+        <tr>
+            <td>{{ user }}</td>
+            {% for page in page_names %}
+                <td class="{{ 'yes' if pages[page] else 'no' }}">{{ 'o' if pages[page] else 'x' }}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

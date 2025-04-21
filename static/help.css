@@ -1,0 +1,289 @@
+input,
+html {
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+body {
+  line-height: 1;
+}
+
+@font-face {
+  font-family: YakuHanJP;
+  font-style: normal;
+  font-weight: 400;
+  src: url(../fonts/YakuHanJP-Regular.woff2) format("woff2"), url(../fonts/YakuHanJP-Regular.woff) format("woff"),
+    url(../fonts/YakuHanJP-Regular.eot);
+}
+
+@font-face {
+  font-family: YakuHanJP;
+  font-style: normal;
+  font-weight: 700;
+  src: url(../fonts/YakuHanJP-Bold.woff2) format("woff2"), url(../fonts/YakuHanJP-Bold.woff) format("woff"),
+    url(../fonts/YakuHanJP-Bold.eot);
+}
+
+@font-face {
+  font-family: Noto Sans Japanese;
+  font-style: normal;
+  font-weight: 400;
+  src: local("NotoSansJP-Regular.otf"), url(../fonts/NotoSansJP-Regular.woff2) format("woff2"),
+    url(../fonts/NotoSansJP-Regular.woff) format("woff"),
+    url(../fonts/NotoSansJP-Regular.otf) format("opentype");
+}
+
+body,
+html {
+  margin: 0;
+  overflow: auto;
+  padding: 0;
+  position: relative;
+  width: 100%;
+}
+
+.main-container {
+  border: 10px solid rgb(0, 114, 221);
+  box-sizing: border-box;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.component-single {
+  background-color: #ededed;
+  float: left;
+  position: relative;
+  width: 100%;
+}
+
+.component-single ::-moz-selection {
+  background: transparent;
+}
+
+.component-single ::selection {
+  background: transparent;
+}
+
+.component-single .answer {
+  background-color: #fff;
+  display: block;
+  height: 140px;
+  position: absolute;
+  width: 100%;
+}
+
+.component-single .answer .input-container {
+  box-sizing: border-box;
+  float: right;
+  margin: auto;
+  padding: 42px 0 42px 80px;
+  width: 100%;
+}
+
+.component-single .answer .input-container .wrap[type="text"] {
+  display: block;
+  height: 60px;
+  margin: 0 auto;
+  width: 90%;
+}
+
+.component-single .answer .input-container .wrap[type="text"] .input[type="text"] {
+  border: 3px solid #000;
+  display: block;
+  float: left;
+  font-size: 18px;
+  padding: 15px;
+  transition: border 0.8s ease-out;
+  width: 70%;
+  box-sizing: border-box;
+}
+
+.component-single .answer .input-container .wrap[type="text"] .input[type="text"]:focus {
+  -webkit-appearance: none;
+  border: 3px solid rgb(0, 0, 0);
+  outline: none;
+}
+
+.component-single .answer .submit {
+  -webkit-appearance: none;
+  background-color: rgb(0, 114, 221);
+  border: 2px solid rgb(0, 114, 221);
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  float: right;
+  font-size: 18px;
+  font-weight: 700;
+  outline: none;
+  padding: 13px 10px;
+  text-decoration: none;
+  transition: all 0.2s ease-out;
+  vertical-align: middle;
+  width: 20%;
+  height: 60px;
+}
+
+.component-single .answer .submit:hover {
+  background-color: rgba(0, 114, 221, 0.861);
+}
+
+.component-single .answer .submit.blank {
+  background-color: #fff;
+  color: rgb(0, 114, 221);
+}
+
+.component-single .answer .submit.blank:before {
+  content: "解答する";
+}
+
+@media (max-width: 1020px) {
+  .component-single .answer .input-container .wrap[type="text"] .input[type="text"] {
+    width: 55%;
+  }
+  .component-single .answer .submit {
+    width: 30%;
+  }
+}
+
+@media (max-width: 768px) {
+  body,
+  html {
+    font-size: 11px;
+    height: 100%;
+    min-height: auto;
+    min-width: 320px;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .main-container {
+    height: 100%;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    border-width: 0;
+  }
+
+  .component-single {
+    height: 100%;
+    margin-top: 0;
+    width: 100%;
+    float: none;
+    overflow: auto;
+  }
+
+  .component-single .answer {
+    height: auto;
+    position: relative;
+  }
+
+   .component-single .answer .input-container {
+    padding: 10px;
+    float: none;
+   }
+
+   .component-single .answer .input-container .wrap:after {
+    clear: both;
+    content: "";
+    display: block;
+   }
+
+   .component-single .answer .input-container .wrap[type="text"] {
+     width: 100%;
+     height: auto;
+     margin-bottom: 5px;
+   }
+
+   .component-single .answer .input-container .wrap[type="text"] .input[type="text"] {
+     -webkit-appearance: none;
+     border-radius: 0;
+     box-sizing: border-box;
+     font-size: 14px;
+     margin: 0 0 5px 0;
+     padding: 13px 15px;
+     width: 100%;
+     float: none;
+     height: 50px;
+   }
+
+   .component-single .answer .submit {
+     border-width: 3px;
+     font-size: 14px;
+     height: 50px;
+     padding: 7px 5px;
+     width: 100%;
+     float: none;
+     margin-top: 5px;
+   }
+
+   .component-single .answer .submit.blank {
+      width: 100%;
+   }
+
+   .component-single .answer .submit:hover {
+     background-color: rgb(0, 114, 221);
+   }
+   .component-single .answer .submit.blank:hover {
+     background-color: #eee;
+   }
+
+}
+
+@media screen and (max-height: 800px) {
+  .component-single {
+     height: 100%;
+     overflow: auto;
+  }
+  .component-single .answer {
+     overflow: hidden;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .component-single {
+    height: 100%;
+    overflow: auto;
+  }
+}
+
+@media (max-width: 320px) {
+    body, html {
+        font-size: 10px;
+    }
+    .component-single .answer .input-container .wrap[type="text"] .input[type="text"] {
+        font-size: 13px;
+        padding: 10px 12px;
+        height: 45px;
+    }
+    .component-single .answer .submit {
+        font-size: 13px;
+        height: 45px;
+        padding: 6px 4px;
+    }
+}
+
+@media (max-width: 768px) and (min-width: 414px) {
+  body,
+  html {
+    zoom: 1.0;
+  }
+}
+
+.box {
+    position:fixed;
+    display:block;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 20px auto;
+    padding: 20px;
+    border: 2px solid #000;
+    width:90%;
+    height:86vh;
+    border-radius: 20px;
+  }
