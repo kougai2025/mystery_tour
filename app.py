@@ -146,20 +146,22 @@ def serve_page(user_dir, page):
 
     if page != "A.html":
         if session.pop("just_logged_in", False):
-            pass  # ✅ ログイン直後はトークン不要
+            pass
         elif not key or session.get("valid_keys", {}).get(current_path) != key:
             return render_template("error.html", redirect_url=f"../login"), 403
         session["valid_keys"].pop(current_path, None)
 
-    template_path = f"{user_dir}/{page}"
-    if not os.path.exists(os.path.join('templates', template_path)):
+    # ✅ 修正箇所：絶対パスで存在確認
+    template_full_path = os.path.join(app.root_path, 'templates', user_dir, page)
+    if not os.path.exists(template_full_path):
         return "ページが見つかりません", 404
 
     db = get_db()
     db.execute('INSERT OR IGNORE INTO access_log (username, page) VALUES (?, ?)', (username, f'/{user_dir}/{page}'))
     db.commit()
 
-    return render_template(template_path, username=username)
+    return render_template(f"{user_dir}/{page}", username=username)
+
 
 @app.route('/generate_link/<user_dir>/<page>')
 def generate_link(user_dir, page):
@@ -195,13 +197,3 @@ def access_status():
 if __name__ == '__main__':
     app.run(debug=True)
 
-with app.app_context():
-    db = get_db()
-    db.execute('''
-        CREATE TABLE IF NOT EXISTS access_log (
-            username TEXT,
-            page TEXT,
-            PRIMARY KEY (username, page)
-        );
-    ''')
-    db.commit()

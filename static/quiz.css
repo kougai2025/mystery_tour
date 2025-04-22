@@ -57,7 +57,7 @@ html {
 .main-container {
   border: 10px solid rgb(0, 114, 221);
   box-sizing: border-box;
-  height: 100vh;
+  height: 100%;
   overflow: hidden;
   position: relative;
 }
@@ -307,7 +307,7 @@ html {
     border: 2px solid #fff;
     width: 90%;
     background-color:#fff;
-    height: calc(100vh - 240px);
+    height: calc(100% - 240px);
     border-radius: 20px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     overflow-y: auto;
@@ -341,7 +341,7 @@ html {
   .box {
     top: 36px;
     width: 95%;
-    height: calc(100vh - 220px);
+    height: calc(100% - 220px);
     padding: 2px;
   }
   .question {
