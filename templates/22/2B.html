@@ -40,7 +40,7 @@
       if (correctAnswers.includes(input)) {
         resultDiv.innerHTML = `<i class="far fa-circle" style="font-size: 30rem; color: red;" ></i>`;
         setTimeout(function () {
-          window.location.href = "3A.html";
+          window.location.href = "{{ url_for('generate_link', user_dir=username, page='3A.html') }}";
         }, 4000);
       } else {
         resultDiv.innerHTML = `<i class="fas fa-times" style="font-size: 30rem; color: blue;"></i>`;

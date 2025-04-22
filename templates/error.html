@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+<head>
+    <title>校外学習portal</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='quiz.css') }}">
+    <script>
+        setTimeout(function () {
+          window.location.href = "{{ redirect_url }}";
+        }, 4000); 
+    </script>
+</head>
+
+<body>
+    <div id="main-container" class="main-container">
+        <div class="error">
+            <h1 class="e-title">Oops...</h1>
+            <p>お困りのようですな、旅人よ。道に迷われたなら、良いものがある。アツアツの麺ですよ。さあお座りなされ、皆の衆は今必死をこいていいものをこらえておりますからな。おお、麺ではなく元のページに戻りたいと？</p>
+            <p>5秒以内にログイン画面へリダイレクトします</p>
+        </div>
+    </div>
+</body>

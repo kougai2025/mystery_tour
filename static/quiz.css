@@ -342,7 +342,7 @@ html {
     top: 36px;
     width: 95%;
     height: calc(100vh - 220px);
-    padding: 15px;
+    padding: 2px;
   }
   .question {
     width: 100%;
@@ -366,7 +366,7 @@ p{
 
 .swiper {
   width: 100%;
-  height: 300px;
+  max-height: 100%;
 }
 
 .swiper-slide {
@@ -378,3 +378,15 @@ p{
   font-weight: bold;
 }
 
+.error{
+  width: 90%;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20px;
+}
+
+.e-title{
+  justify-content: center;
+  align-items: center;
+}

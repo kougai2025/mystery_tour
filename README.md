@@ -18,3 +18,6 @@ with app.app_context():
         );
     ''')
     db.commit()
+
+
+
