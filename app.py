@@ -1,6 +1,6 @@
 import sqlite3
 import os
-from flask import Flask, render_template, request, redirect, session, g
+from flask import Flask, render_template, request, redirect, session, g, url_for
 from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
@@ -108,13 +108,13 @@ def index():
         if user and user['last_page']:
             return redirect(user['last_page'])
         return redirect(f'/{username}/A.html')
-    return redirect('/login')
+    return redirect(url_for('login'))
 
 @app.route('/<user_dir>/<page>')
 def serve_page(user_dir, page):
     username = session.get('username')
     if not username:
-        return redirect('/login')
+        return redirect(url_for('login'))
 
     if str(username) != user_dir:
         return "アクセス権がありません", 403
