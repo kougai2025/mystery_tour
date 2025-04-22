@@ -154,7 +154,7 @@ def serve_page(user_dir, page):
     # ✅ 修正箇所：絶対パスで存在確認
     template_full_path = os.path.join(app.root_path, 'templates', user_dir, page)
     if not os.path.exists(template_full_path):
-        return "ページが見つかりません", 404
+        return "ページが見つかりません"+template_full_path, 404
 
     db = get_db()
     db.execute('INSERT OR IGNORE INTO access_log (username, page) VALUES (?, ?)', (username, f'/{user_dir}/{page}'))
@@ -196,5 +196,3 @@ def access_status():
 
 if __name__ == '__main__':
     app.run(debug=True)
-
-
